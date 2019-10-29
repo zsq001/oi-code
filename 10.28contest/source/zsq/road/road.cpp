@@ -10,8 +10,8 @@ bool cmp(int x,int y)
 }
 int main()
 {
-	freopen("road.in","r",stdin);
-	freopen("road.out","w",stdout);
+//	freopen("road.in","r",stdin);
+//	freopen("road.out","w",stdout);
 	int ans=0,n,mmax=-1;
 	cin>>n;
 	for(int i=1;i<=n;i++)
