@@ -9,7 +9,30 @@ void cp(int qwq)
 		for(int j=1;j<=7;j++)
 			cop[qwq][i][j]=yuan[i][j];
 }
-void update()
+void luo()
+{
+	for(int i=1;i<=5;i++)
+	{
+		 for(int j=1,x=0;j<=7;j++)
+		 {
+			if(!yuan[i][j])
+				x++;
+			else 
+			{
+				yuan[i][j-x]=yuan[i][j];
+				yuan[i][j]=0;
+			}
+		 }
+	}
+}
+bool kill()
+{
+	int fl=0;
+	for(int i=1;i<=5;i++)
+		for(int j=1;j<=7;j++)
+		{
+		}	
+}
 int main()
 {
 	int n,x;
