@@ -1,0 +1,69 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+#include <queue>
+int in() {
+    int x = 0; char c = getchar(); bool f = 0;
+    while (c < '0' || c > '9')
+        f |= c == '-', c = getchar();
+    while (c >= '0' && c <= '9')
+        x = (x << 1) + (x << 3) + (c ^ 48), c = getchar();
+    return f ? -x : x;
+}
+template<typename T>inline void chk_min(T &_, T __) { _ = _ < __ ? _ : __; }
+template<typename T>inline void chk_max(T &_, T __) { _ = _ > __ ? _ : __; }
+
+const int N = 255, M = 1e4 + 5;
+
+struct edge {
+    int next, to, w;
+} e[M << 1];
+int ecnt = 1, head[N];
+int n, m, k;
+int c[N];
+int f[N][N];
+
+inline void jb(const int u, const int v, const int w) {
+    e[++ecnt] = (edge){head[u], v, w}, head[u] = ecnt;
+    e[++ecnt] = (edge){head[v], u, w}, head[v] = ecnt;
+}
+
+struct info {
+    int ver, len, max;
+} ;
+
+void spfa(int s, int *d) {
+    std::queue<info> q;
+    d[s] = c[s];
+    q.push((info){s, 0, c[s]});
+    while (!q.empty()) {
+        int u = q.front().ver, len = q.front().len, now = q.front().max;
+        q.pop();
+        for (int i = head[u]; i; i = e[i].next) {
+            int v = e[i].to, t = len + e[i].w, k = std::max(now, c[v]);
+            if (!~d[v] || d[v] > t + k) {
+                d[v] = t + k;
+                q.push((info){v, t, k});
+            }
+        }
+    }
+}
+
+int main() {
+    //freopen("in", "r", stdin);
+    freopen("roadtoll.in", "r", stdin);
+    freopen("roadtoll.out", "w", stdout);
+    n = in(), m = in(), k = in();
+    for (int i = 1; i <= n; ++i)
+        c[i] = in();
+    for (int i = 1, u, v, w; i <= m; ++i) {
+        u = in(), v = in(), w = in();
+        jb(u, v, w);
+    }
+    memset(f, -1, sizeof(f));
+    for (int i = 1; i <= n; ++i)
+        spfa(i, f[i]);
+    while (k--)
+        printf("%d\n", f[in()][in()]);
+    return 0;
+}
