@@ -37,8 +37,8 @@ inline void dfs(int u,int fa){
 	}
 }
 int main(){
-	freopen("sciandtech.in","r",stdin);
-	freopen("sciandtech.out","w",stdout);
+//	freopen("sciandtech.in","r",stdin);
+//	freopen("sciandtech.out","w",stdout);
 	n=read();
 	for(int i=2;i<=n;i++){
 		int u=read();addedge(i,u);
