@@ -1,0 +1,49 @@
+#include<cstdio>
+#include<cmath>
+using namespace std;
+unsigned long long int m,r,l,n,k,s=1;
+int main()
+{
+	freopen("code.in","r",stdin);
+	freopen("code.out","w",stdout);
+	scanf("%lld%lld",&n,&k);
+	r=pow(2,n)-1;
+	l=0;
+	while(l!=r)
+	{
+		m=(r+l)/2;
+		if(s==1)
+		{
+			if(k<=m)
+			{
+				printf("0");
+				r=m;
+				s=1;
+			}
+			else
+			{
+				printf("1");
+				l=m+1;
+				s=-1;
+			}
+		}
+		else
+		{
+			if(k<=m)
+			{
+				printf("1");
+				r=m;
+				s=1;
+			}
+			else
+			{
+				printf("0");
+				l=m+1;
+				s=-1;
+			}
+		}
+	}
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

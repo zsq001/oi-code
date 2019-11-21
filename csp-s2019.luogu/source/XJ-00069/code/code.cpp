@@ -1,0 +1,43 @@
+#include<stdio.h>
+long long int n,k,len=2,a[5000000][23],b[5000000][23],i,j,p,r;
+int main()
+{
+	freopen("code.in","r",stdin);
+	freopen("code.out","w",stdout);
+	scanf("%lld%lld",&n,&k);
+	a[0][1]=0;a[1][1]=1;
+	for(i=2;i<=n;i++)
+	{
+		for(j=0;j<len;j++)
+		{
+			for(p=2;p<=i;p++)
+			{
+				b[j][p]=a[j][p-1];
+			}
+			b[j][1]=0;
+		}
+		for(j=len,r=len-1;j<len*2;j++,r--)
+		{
+			for(p=2;p<=i;p++)
+			{
+				b[j][p]=a[r][p-1];
+			}
+			b[j][1]=1;
+		}
+		len=len*2;
+		for(j=0;j<len;j++)
+		{
+			for(p=1;p<=i;p++)
+			{
+				a[j][p]=b[j][p];
+			}
+		}
+	}
+	for(i=1;i<=n;i++)
+	{
+		printf("%lld",a[k][i]);
+	}
+	fclose(stdin);
+	fclose(stdout);
+	return 0;
+}

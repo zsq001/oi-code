@@ -1,0 +1,94 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+int in() {
+    int x = 0; char c = getchar(); bool f = 0;
+    while (c < '0' || c > '9')
+        f |= c == '-', c = getchar();
+    while (c >= '0' && c <= '9')
+        x = (x << 1) + (x << 3) + (c ^ 48), c = getchar();
+    return f ? -x : x;
+}
+template<typename T>inline void chk_min(T &_, T __) { _ = _ < __ ? _ : __; }
+template<typename T>inline void chk_max(T &_, T __) { _ = _ > __ ? _ : __; }
+
+const int N = 105, M = 2005, mod = 998244353;
+
+inline void add(int &_, int __) {
+    _ += __;
+    if (_ >= mod)
+        _ -= mod;
+    if (_ < 0)
+        _ += mod;
+}
+
+int n, m;
+int a[N][M], pre[N][M], f[M][M];
+int g[2][105][105];
+
+void dp1() {
+    f[0][0] = 1;
+    for (int i = 1; i <= m; ++i) {
+        f[i][0] = 1;
+        for (int j = 1; j <= i; ++j) {
+            f[i][j] = (f[i - 1][j] + 1ll * f[i - 1][j - 1] * pre[n][i] % mod) % mod;
+        }
+    }
+    for (int i = 1; i < m; ++i)
+        add(f[m][m], f[m][i]);
+}
+
+void dp2(const int l) {
+    memset(g[0], 0, sizeof(g[0]));
+    g[0][0][0] = 1;
+    for (int i = 1, cur = 1; i <= m; ++i, cur ^= 1) {
+        memset(g[cur], 0, sizeof(g[cur]));
+        for (int j = 0; j <= i; ++j) {
+            for (int k = 0; k <= j; ++k) {
+                g[cur][j][k] = g[cur ^ 1][j][k];
+                if (k)
+                    add(g[cur][j][k], 1ll * a[l][i] * g[cur ^ 1][j - 1][k - 1] % mod);
+                if (j)
+                    add(g[cur][j][k], 1ll * (pre[n][i] - a[l][i] + mod) * g[cur ^ 1][j - 1][k] % mod);
+            }
+        }
+    }
+    for (int j = 1; j <= m; ++j)
+        for (int k = (j / 2) + 1; k <= j; ++k)
+            add(f[m][m], -g[m & 1][j][k]);
+}
+
+int h[15][15][15];
+void dp3(int x, int y) {
+    memset(h, 0, sizeof(h));
+    h[0][0][0] = 1;
+    for (int i = 1; i <= m; ++i)
+        for (int j = 0; j <= i; ++j)
+            for (int k = 0; k <= i; ++k) {
+                h[i][j][k] = h[i - 1][j][k];
+                if (j)
+                    add(h[i][j][k], 1ll * h[i - 1][j - 1][k] * a[x][i] % mod);
+                if (k)
+                    add(h[i][j][k], 1ll * h[i - 1][j][k - 1] * a[y][i] % mod);
+            }
+    for (int i = 1; i + i <= m; ++i)
+        add(f[m][m], h[m][i][i]);
+}
+
+int main() {
+    freopen("meal3.in", "r", stdin);
+    //freopen("meal.in", "r", stdin);
+    //freopen("meal.out", "w", stdout);
+    n = in(), m = in();
+    for (int i = 1; i <= n; ++i)
+        for (int j = 1; j <= m; ++j)
+            a[i][j] = in(), pre[i][j] = (pre[i - 1][j] + a[i][j]) % mod;
+    dp1();
+    for (int i = 1; i <= n; ++i)
+        dp2(i);
+    for (int i = 1; i < n; ++i)
+        for (int j = i + 1; j <= n; ++j)
+            dp3(i, j);
+    printf("%d\n", f[m][m]);
+    return 0;
+}
