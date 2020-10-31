@@ -1,7 +1,0 @@
-luogu 1024 一元三次方程求解
-luogu 1182 数列分段
-luogu 3382 三分法模板
-luogu 2678 跳石头
-luogu 2985 吃巧克力
-luogu 1314 聪明的质检员
-luogu 2571 传送带

@@ -1,0 +1,7 @@
+T1 BZOJ 4034 [HAOI2015]T2
+T2 [Usaco2009 Dec]Toll 过路费
+T3 【USACO 2007 Dec奶牛观光】
+
+T1 dfs序+线段树
+T2 floyd妙用
+T3 分数规划+spfa

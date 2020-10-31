@@ -1,6 +1,0 @@
-luogu 3865 ST表模板
-luogu 3379 最近公共祖先（LCA）模板
-luogu 1613 跑路
-luogu 1967 货车运输
-luogu 1351 联合权值
-luogu 1081 开车旅行（选做）

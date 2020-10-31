@@ -1,7 +1,0 @@
-luogu 1186 玛丽卡（昨天的有）
-codevs 4919 线段树练习4
-luogu 3373 线段树模板2
-codevs 1079 回家
-codevs 1041 Car的旅行路线
-luogu 1119 灾后重建
-codevs 4927 线段树练习5（选做）

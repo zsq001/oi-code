@@ -1,0 +1,7 @@
+codevs 1230 元素查找
+codevs 1553 互斥的数
+luogu 2879 区间统计
+codevs 2144 砝码称重2
+luogu 2962 灯
+POJ 3349 雪花
+luogu 1360 黄金阵容平衡

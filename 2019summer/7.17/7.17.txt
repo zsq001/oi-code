@@ -1,0 +1,6 @@
+codevs 1081 线段树练习2
+codevs 1082 线段树练习3
+luogu 1378 油滴扩展
+HDU 1698 Just a Hook
+luogu 1514 引水入城
+codevs 1282 约瑟夫问题

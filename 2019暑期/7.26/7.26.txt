@@ -1,8 +1,0 @@
-luogu 2661 信息传递
-luogu 3388 割点
-luogu 3387 缩点
-luogu 3627 抢掠计划
-luogu 2341 受欢迎的牛
-codevs 2822 爱在心中
-luogu 1262 间谍网络
-POJ 1236 Network of Schools

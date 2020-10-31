@@ -1,0 +1,3 @@
+T1 https://codeforces.com/gym/101669 中的G题
+T2 https://codeforces.com/gym/101472 中的G题
+T3 https://www.luogu.org/problem/P4648

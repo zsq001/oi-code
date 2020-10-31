@@ -1,7 +1,0 @@
-luogu 3374 树状数组1 
-luogu 3368 树状数组2
-luogu 1908 逆序对
-luogu 1083 借教室
-luogu 1637 三元上升子序列
-luogu 1966 火柴排队
-luogu 1972 HH的项链

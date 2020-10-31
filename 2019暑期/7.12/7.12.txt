@@ -1,6 +1,0 @@
-luogu 1464 Function
-luogu 1983 车站分级
-codevs 1080 线段树练习
-luogu 1330 封锁阳光大学
-luogu 1363 幻象迷宫
-HDU 1754 I hate it
